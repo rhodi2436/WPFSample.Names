@@ -1,0 +1,60 @@
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Names.Services.NavigateService;
+using Names.ViewModels;
+using Names.Views;
+using System.Windows;
+
+namespace Names
+{
+    /// <summary>
+    /// Interaction logic for App.xaml
+    /// </summary>
+    public partial class App : Application
+    {
+        private IHost _host;
+        public static IServiceProvider ServiceProvider { get; private set; } = null!;
+
+        public App()
+        {
+            _host = Host.CreateDefaultBuilder()
+                .ConfigureServices((context, services) =>
+                {
+                    services.AddSingleton<MainWindow>();
+                    services.AddSingleton<HomeView>();
+                    services.AddSingleton<OrderListView>();
+                    services.AddSingleton<OrderDetailView>();
+                    services.AddSingleton<HomeViewModel>();
+                    services.AddSingleton<MainWindowViewModel>();
+                    services.AddSingleton<OrderDetailViewModel>();
+                    services.AddSingleton<OrderListViewModel>();
+                    services.AddSingleton<INavigationService, NavigationService>();
+                })
+                .Build();
+        }
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            _host.Start();
+            ServiceProvider = _host.Services;
+            var mainWindow = _host.Services.GetRequiredService<MainWindow>();
+            var mainWindowViewModel = _host.Services.GetRequiredService<MainWindowViewModel>();
+            var homeView = _host.Services.GetRequiredService<HomeView>();
+            var homeViewModel = _host.Services.GetRequiredService<HomeViewModel>();
+            homeView.DataContext = homeViewModel;
+            mainWindow.DataContext = mainWindowViewModel;
+            mainWindow.MainRegion.Content = homeView;
+            mainWindow.Show();
+            base.OnStartup(e);
+        }
+
+        protected override async void OnExit(ExitEventArgs e)
+        {
+            if (_host != null)
+            {
+                await _host.StopAsync();
+                _host.Dispose();
+            }
+            base.OnExit(e);
+        }
+    }
+}

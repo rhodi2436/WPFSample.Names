@@ -1,0 +1,17 @@
+﻿<Window x:Class="Names.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:Names.ViewModels"
+        Title="MyApp" Height="400" Width="600">
+    <DockPanel>
+        <!-- 顶部导航栏 -->
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Background="#EEE">
+            <Button Content="🏠 首页" Margin="5" Width="80" Command="{Binding NavigateToHomeCommand}"/>
+            <Button Content="📦 订单列表" Margin="5" Width="100" Command="{Binding NavigateToOrderListCommand}"/>
+        </StackPanel>
+
+        <!-- 内容区域 -->
+        <ContentControl x:Name="MainRegion">
+        </ContentControl>
+    </DockPanel>
+</Window>

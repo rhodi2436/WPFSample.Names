@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="Names.Views.OrderListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Names.Views"
+             mc:Ignorable="d" 
+             Height="Auto" Width="Auto">
+    <StackPanel Margin="30">
+        <TextBlock Text="订单列表" FontSize="20" Margin="0 0 0 10"/>
+        <ItemsControl>
+            <ItemsControl.Items>
+                <Button Content="查看订单 #101" Margin="2" Command="{Binding NavigateToOrderDetailCommand}" CommandParameter="101"/>
+                <Button Content="查看订单 #102" Margin="2" Command="{Binding NavigateToOrderDetailCommand}" CommandParameter="102"/>
+                <Button Content="查看订单 #103" Margin="2" Command="{Binding NavigateToOrderDetailCommand}" CommandParameter="103"/>
+            </ItemsControl.Items>
+        </ItemsControl>
+    </StackPanel>
+</UserControl>
