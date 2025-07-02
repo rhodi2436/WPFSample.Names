@@ -17,10 +17,10 @@ public partial class HomeViewModel : ObservableObject, INavigationAware
     [RelayCommand]
     void NavigateToOrderList()
     {
-        _navigationService.NavigateTo<OrderListViewModel>();
+        _navigationService.NavigateTo<OrderListViewModel>("main");
     }
 
-    public void OnNavigateTo(object navigationParameter)
+    public void OnNavigateTo(object? navigationParameter)
     {
         // TODO 处理路由参数
         if (navigationParameter == null) { return; }

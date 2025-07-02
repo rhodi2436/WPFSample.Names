@@ -1,5 +1,6 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Names.Services.NavigateService;
+using System.Windows;
 
 namespace Names.Views
 {
@@ -11,8 +12,15 @@ namespace Names.Views
         public MainWindow()
         {
             InitializeComponent();
+            RegisterRouteOutlet();
         }
 
-        public ContentControl MainRegionControl => MainRegion;
+        private void RegisterRouteOutlet()
+        {
+            var navigationService = App.ServiceProvider.GetRequiredService<INavigationService>();
+
+            navigationService.RegisterOutlet(MainRegion);
+            navigationService.RegisterOutlet(SubmainRegion);
+        }
     }
 }

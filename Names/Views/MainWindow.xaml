@@ -1,7 +1,8 @@
 ﻿<Window x:Class="Names.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="clr-namespace:Names.ViewModels"
+        xmlns:vm="clr-namespace:Names.ViewModels" 
+        xmlns:route="clr-namespace:Names.Services.NavigateService.RouteOutlet"
         Title="MyApp" Height="400" Width="600">
     <DockPanel>
         <!-- 顶部导航栏 -->
@@ -10,8 +11,10 @@
             <Button Content="📦 订单列表" Margin="5" Width="100" Command="{Binding NavigateToOrderListCommand}"/>
         </StackPanel>
 
-        <!-- 内容区域 -->
-        <ContentControl x:Name="MainRegion">
-        </ContentControl>
+        <!-- 路由出口 -->
+        <StackPanel Orientation="Horizontal" Background="#EEE">
+            <route:RouteOutlet OutletName="main" x:Name="MainRegion" Background="#CCC" Width="300"/>
+            <route:RouteOutlet OutletName="submain" x:Name="SubmainRegion" Background="#AAA" Width="300"/>
+        </StackPanel>
     </DockPanel>
 </Window>

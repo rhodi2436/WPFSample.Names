@@ -1,40 +1,41 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Names.Views;
-using System.Windows.Controls;
+using Names.Services.NavigateService.RouteOutlet;
 
 namespace Names.Services.NavigateService;
 public class NavigationService : INavigationService
 {
     private readonly IServiceProvider _provider;
-    private readonly MainWindow? _window;
+    private readonly Dictionary<string, IRouteOutlet> _routeOutlets = new();
 
-    private ContentControl? Region => _window?.MainRegion;
-
-    public NavigationService(IServiceProvider provider, MainWindow window)
+    public NavigationService(IServiceProvider provider)
     {
         _provider = provider;
-        _window = window ?? throw new ArgumentNullException(nameof(window));
     }
 
-    public void NavigateTo<TViewModel>() where TViewModel : class
+    public void RegisterOutlet(IRouteOutlet outlet)
     {
-        if (Region == null) throw new InvalidOperationException("Navigation region is not set.");
-        var vm = _provider.GetRequiredService<TViewModel>();
-        var view = ViewLocator.LocateForViewModel(vm); // 你可以通过约定命名来找 View
-        view.DataContext = vm;
-        Region.Content = view;
+        _routeOutlets[outlet.OutletName] = outlet;
     }
 
-    public void NavigateTo<TViewModel>(object navigationParameter) where TViewModel : class, INavigationAware
+    public void NavigateTo<TViewModel>(string region, object? parameter) where TViewModel : class
     {
-        if (Region == null) throw new InvalidOperationException("Navigation region is not set.");
-        var vm = _provider.GetRequiredService<TViewModel>();
+        var vm = _provider.GetService<TViewModel>();
         if (vm is INavigationAware aware)
         {
-            aware.OnNavigateTo(navigationParameter);
+            aware.OnNavigateTo(parameter);
         }
-        var view = ViewLocator.LocateForViewModel(vm); // 你可以通过约定命名来找 View
+
+        var view = ViewLocator.LocateForViewModel(vm);
         view.DataContext = vm;
-        Region.Content = view;
+
+        if (_routeOutlets.TryGetValue(region, out var routeOutlet))
+        {
+            routeOutlet.SetContent(view);
+        }
+    }
+
+    public void NavigateTo<TViewModel>(string region) where TViewModel : class
+    {
+        this.NavigateTo<TViewModel>(region, null);
     }
 }

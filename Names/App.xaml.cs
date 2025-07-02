@@ -20,6 +20,8 @@ namespace Names
             _host = Host.CreateDefaultBuilder()
                 .ConfigureServices((context, services) =>
                 {
+                    services.AddSingleton<INavigationService, NavigationService>();
+
                     services.AddSingleton<MainWindow>();
                     services.AddSingleton<HomeView>();
                     services.AddSingleton<OrderListView>();
@@ -28,7 +30,6 @@ namespace Names
                     services.AddSingleton<MainWindowViewModel>();
                     services.AddSingleton<OrderDetailViewModel>();
                     services.AddSingleton<OrderListViewModel>();
-                    services.AddSingleton<INavigationService, NavigationService>();
                 })
                 .Build();
         }
@@ -38,12 +39,15 @@ namespace Names
             ServiceProvider = _host.Services;
             var mainWindow = _host.Services.GetRequiredService<MainWindow>();
             var mainWindowViewModel = _host.Services.GetRequiredService<MainWindowViewModel>();
-            var homeView = _host.Services.GetRequiredService<HomeView>();
-            var homeViewModel = _host.Services.GetRequiredService<HomeViewModel>();
-            homeView.DataContext = homeViewModel;
+            //var homeView = _host.Services.GetRequiredService<HomeView>();
+            //var homeViewModel = _host.Services.GetRequiredService<HomeViewModel>();
+            //homeView.DataContext = homeViewModel;
             mainWindow.DataContext = mainWindowViewModel;
-            mainWindow.MainRegion.Content = homeView;
+
             mainWindow.Show();
+
+            var navigationService = _host.Services.GetRequiredService<INavigationService>();
+            navigationService.NavigateTo<HomeViewModel>("main");
             base.OnStartup(e);
         }
 

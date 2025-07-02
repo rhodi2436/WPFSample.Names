@@ -14,7 +14,7 @@ namespace Names.ViewModels
         [ObservableProperty]
         private int _orderId;
 
-        public void OnNavigateTo(object navigationParameter)
+        public void OnNavigateTo(object? navigationParameter)
         {
             ArgumentNullException.ThrowIfNull(nameof(navigationParameter));
 

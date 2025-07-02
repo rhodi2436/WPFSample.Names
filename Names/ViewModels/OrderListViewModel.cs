@@ -17,7 +17,7 @@ namespace Names.ViewModels
         {
             if (param is string str && int.TryParse(str, out int orderId))
             {
-                _navigationService.NavigateTo<OrderDetailViewModel>(orderId);
+                _navigationService.NavigateTo<OrderDetailViewModel>("submain", orderId);
             }
         }
     }

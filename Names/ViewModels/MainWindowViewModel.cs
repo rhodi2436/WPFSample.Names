@@ -25,13 +25,13 @@ namespace Names.ViewModels
         [RelayCommand]
         private void NavigateToHome()
         {
-            _navigationService.NavigateTo<HomeViewModel>();
+            _navigationService.NavigateTo<HomeViewModel>("main");
         }
 
         [RelayCommand]
         private void NavigateToOrderList()
         {
-            _navigationService.NavigateTo<OrderListViewModel>();
+            _navigationService.NavigateTo<OrderListViewModel>("main");
         }
     }
 }
