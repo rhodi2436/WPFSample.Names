@@ -1,0 +1,7 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- 实际颜色值 -->
+    <Color x:Key="Token.PrimaryColor">#3F6FF6</Color>
+    <Color x:Key="Token.BackgroundColor">#FFFFFF</Color>
+    <Color x:Key="Token.ForegroundColor">#1E1E1E</Color>
+</ResourceDictionary>

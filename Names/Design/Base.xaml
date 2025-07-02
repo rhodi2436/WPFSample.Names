@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- 语义颜色 -->
+    <SolidColorBrush x:Key="Color.Primary" Color="{DynamicResource Token.PrimaryColor}" />
+    <SolidColorBrush x:Key="Color.Background" Color="{DynamicResource Token.BackgroundColor}" />
+    <SolidColorBrush x:Key="Color.Foreground" Color="{DynamicResource Token.ForegroundColor}" />
+
+    <!-- 字体 -->
+    <FontFamily x:Key="Font.Main">Segoe UI</FontFamily>
+    <sys:Double x:Key="FontSize.Normal">14</sys:Double>
+
+</ResourceDictionary>

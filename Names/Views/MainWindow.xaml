@@ -9,6 +9,7 @@
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Background="#EEE">
             <Button Content="🏠 首页" Margin="5" Width="80" Command="{Binding NavigateToHomeCommand}"/>
             <Button Content="📦 订单列表" Margin="5" Width="100" Command="{Binding NavigateToOrderListCommand}"/>
+            <Button Content="Theme" Margin="5" Width="100" Command="{Binding ToggleThemeCommand}" />
         </StackPanel>
 
         <!-- 路由出口 -->

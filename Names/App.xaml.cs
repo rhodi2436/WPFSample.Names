@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Names.Services.NavigateService;
+using Names.Services.ThemeService;
 using Names.ViewModels;
 using Names.Views;
 using System.Windows;
@@ -20,6 +21,7 @@ namespace Names
             _host = Host.CreateDefaultBuilder()
                 .ConfigureServices((context, services) =>
                 {
+                    services.AddSingleton<IThemeService, ThemeService>();
                     services.AddSingleton<INavigationService, NavigationService>();
 
                     services.AddSingleton<MainWindow>();
