@@ -34,6 +34,7 @@ namespace Names
                     services.AddSingleton<OrderListViewModel>();
                 })
                 .Build();
+            InitializeComponent();
         }
         protected override void OnStartup(StartupEventArgs e)
         {
