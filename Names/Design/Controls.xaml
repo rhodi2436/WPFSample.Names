@@ -4,8 +4,8 @@
     <Style TargetType="Button">
         <Setter Property="Background" Value="{DynamicResource Color.Primary}" />
         <Setter Property="Foreground" Value="{DynamicResource Color.Foreground}" />
-        <Setter Property="FontFamily" Value="{StaticResource Font.Main}" />
-        <Setter Property="FontSize" Value="{StaticResource FontSize.Normal}" />
+        <Setter Property="FontFamily" Value="{StaticResource Token.Font.Family.Primary}" />
+        <Setter Property="FontSize" Value="{StaticResource Token.Font.Size.MD}" />
         <Setter Property="Padding" Value="8,4" />
         <Setter Property="Margin" Value="5" />
     </Style>
@@ -13,6 +13,6 @@
     <!-- TextBlock 样式（示例） -->
     <Style TargetType="TextBlock">
         <Setter Property="Foreground" Value="{DynamicResource Color.Foreground}" />
-        <Setter Property="FontFamily" Value="{StaticResource Font.Main}" />
+        <Setter Property="FontFamily" Value="{StaticResource Token.Font.Family.Primary}" />
     </Style>
 </ResourceDictionary>

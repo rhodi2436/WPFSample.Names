@@ -6,9 +6,8 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <!-- 默认使用 Light 主题 -->
-                <ResourceDictionary Source="Design/Light.xaml" />
-                <ResourceDictionary Source="Design/Base.xaml" />
-                <ResourceDictionary Source="Design/Controls.xaml" />
+                <ResourceDictionary Source="/Design/Light.xaml" />
+                <ResourceDictionary Source="/Design/Controls.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

@@ -2,13 +2,13 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Token.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    
     <!-- 语义颜色 -->
-    <SolidColorBrush x:Key="Color.Primary" Color="{DynamicResource Token.PrimaryColor}" />
-    <SolidColorBrush x:Key="Color.Background" Color="{DynamicResource Token.BackgroundColor}" />
-    <SolidColorBrush x:Key="Color.Foreground" Color="{DynamicResource Token.ForegroundColor}" />
-
-    <!-- 字体 -->
-    <FontFamily x:Key="Font.Main">Segoe UI</FontFamily>
-    <sys:Double x:Key="FontSize.Normal">14</sys:Double>
+    <SolidColorBrush x:Key="Color.Primary" Color="{StaticResource Token.Color.Primary}" />
+    <SolidColorBrush x:Key="Color.Background" Color="{StaticResource Token.Color.Gray.100}" />
+    <SolidColorBrush x:Key="Color.Foreground" Color="{StaticResource Token.Color.Gray.900}" />
 
 </ResourceDictionary>
