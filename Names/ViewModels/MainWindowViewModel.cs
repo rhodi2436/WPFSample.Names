@@ -2,6 +2,9 @@
 using CommunityToolkit.Mvvm.Input;
 using Names.Services.NavigateService;
 using Names.Services.ThemeService;
+using Names.Utils;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace Names.ViewModels
 {
@@ -41,12 +44,23 @@ namespace Names.ViewModels
         private void ToggleTheme()
         {
             var currentTheme = _themeService.CurrentTheme;
-            switch (currentTheme)
+            var toTheme = currentTheme switch
             {
-                case "Light": _themeService.ApplyTheme("Dark"); break;
-                case "Dark": _themeService.ApplyTheme("Light"); break;
-                default: _themeService.ApplyTheme("Light"); break;
-            }
+                "Light" => "Dark",
+                "Dark" => "Light",
+                _ => "Dark",
+            };
+            var target = App.Current.MainWindow.Content;
+            VisualTransitionPlayer.Play(new VisualTransitionPlayer.TransitionOptions
+            {
+                VisualTarget = target as FrameworkElement,
+                OverlayHost = target as Panel,
+                Duration = TimeSpan.FromMilliseconds(600),
+                BeforeAnimation = () =>
+                {
+                    _themeService.ApplyTheme(toTheme);
+                }
+            });
         }
     }
 }
