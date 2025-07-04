@@ -7,14 +7,14 @@
     <Grid Background="{DynamicResource Color.Background}">
         <DockPanel>
             <!-- 顶部导航栏 -->
-            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Background="#EEE">
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
                 <Button Content="🏠 首页" Margin="5" Width="80" Command="{Binding NavigateToHomeCommand}"/>
                 <Button Content="📦 订单列表" Margin="5" Width="100" Command="{Binding NavigateToOrderListCommand}"/>
                 <Button Content="Theme" Margin="5" Width="100" Command="{Binding ToggleThemeCommand}" />
             </StackPanel>
 
             <!-- 路由出口 -->
-            <StackPanel Orientation="Horizontal" Background="#EEE">
+            <StackPanel Orientation="Horizontal">
                 <route:RouteOutlet OutletName="main" x:Name="MainRegion" Background="#CCC" Width="300"/>
                 <route:RouteOutlet OutletName="submain" x:Name="SubmainRegion" Background="#AAA" Width="300"/>
             </StackPanel>
