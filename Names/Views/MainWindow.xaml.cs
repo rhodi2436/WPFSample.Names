@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Names.Services.NavigateService;
-using System.Windows;
+﻿using System.Windows;
 
 namespace Names.Views
 {
@@ -12,15 +10,6 @@ namespace Names.Views
         public MainWindow()
         {
             InitializeComponent();
-            RegisterRouteOutlet();
-        }
-
-        private void RegisterRouteOutlet()
-        {
-            var navigationService = App.ServiceProvider.GetRequiredService<INavigationService>();
-
-            navigationService.RegisterOutlet(MainRegion);
-            navigationService.RegisterOutlet(SubmainRegion);
         }
     }
 }

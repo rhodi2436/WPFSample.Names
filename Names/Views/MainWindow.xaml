@@ -15,8 +15,8 @@
 
             <!-- 路由出口 -->
             <StackPanel Orientation="Horizontal">
-                <route:RouteOutlet OutletName="main" x:Name="MainRegion" Background="#CCC" Width="300"/>
-                <route:RouteOutlet OutletName="submain" x:Name="SubmainRegion" Background="#AAA" Width="300"/>
+                <route:RouteOutlet OutletName="main" Background="#CCC" Width="300"/>
+                <route:RouteOutlet OutletName="submain" Background="#AAA" Width="300"/>
             </StackPanel>
         </DockPanel>
     </Grid>
