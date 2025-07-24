@@ -14,10 +14,14 @@
             </StackPanel>
 
             <!-- 路由出口 -->
-            <StackPanel Orientation="Horizontal">
-                <route:RouteOutlet OutletName="main" Background="#CCC" Width="300"/>
-                <route:RouteOutlet OutletName="submain" Background="#AAA" Width="300"/>
-            </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+                <route:RouteOutlet Grid.Column="0" OutletName="main" Background="#CCC"/>
+                <route:RouteOutlet Grid.Column="1" OutletName="submain" Background="#AAA"/>
+            </Grid>
         </DockPanel>
     </Grid>
 </Window>

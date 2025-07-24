@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -34,6 +35,10 @@ public class RouteOutlet : ContentControl, IRouteOutlet
 
     private void TryRegister()
     {
+        // 避免设计器出错
+        if (DesignerProperties.GetIsInDesignMode(this))
+            return;
+
         if (!_isRegistered)
         {
             _isRegistered = true;
